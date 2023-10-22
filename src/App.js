@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Routes, Route, NavLink } from "react-router-dom";
+import Counter from "./components/Counter";
+import NotFound from "./components/NotFound";
+import Home from "./components/Home";
+import TestError from "./components/TestError"
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return(
+    <main>
+      <nav>
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/counter">Counter</NavLink>
+        <NavLink to="/notFound">NotFound</NavLink>
+        <NavLink to="/testErrorBoundary">Test Error Boundary</NavLink>
+
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/counter" element={<Counter />}/>
+        <Route path="/notFound" element={<NotFound />} />
+        <Route path="/testErrorBoundary" element={<TestError />}/>
+      </Routes>
+    </main>
+  )
 }
 
-export default App;
+export default App
